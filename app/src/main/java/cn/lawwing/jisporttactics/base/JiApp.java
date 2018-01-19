@@ -5,6 +5,8 @@ import android.content.Context;
 
 import com.tencent.bugly.crashreport.CrashReport;
 
+import org.greenrobot.eventbus.EventBus;
+
 /**
  * Created by lawwing on 2018/1/19.
  */
@@ -18,6 +20,10 @@ public class JiApp extends Application {
         context = getApplicationContext();
         CrashReport
                 .initCrashReport(getApplicationContext(), "c2d1ac1967", false);
+    }
+
+    public static EventBus getEventBus() {
+        return EventBus.getDefault();
     }
 
     public static Context getContext() {
