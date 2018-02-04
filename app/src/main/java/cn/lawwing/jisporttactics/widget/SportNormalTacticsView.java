@@ -122,6 +122,13 @@ public class SportNormalTacticsView extends View implements IUndoRedoCommand {
         }
 
         drawBound(canvas);
+        if (hasScale) {
+            canvas.scale(0.5f, 1f);
+            hasScale = false;
+        } else {
+            canvas.scale(2.0f, 2.0f);
+            hasScale = false;
+        }
     }
 
     /**
@@ -456,12 +463,19 @@ public class SportNormalTacticsView extends View implements IUndoRedoCommand {
         m_strokeType = type;
     }
 
+    private boolean hasScale = false;
+
     /**
      * 重新加载路劲
      */
-    public SportNormalTacticsView reloadPaths() {
+    public SportNormalTacticsView reloadPaths(boolean hasScale) {
         for (ISketchpadDraw draw : m_undoStack.getM_undoStack()) {
             draw.draw(m_canvas);
+        }
+        if (hasScale) {
+            m_canvas.scale(0.5f, 1f);
+        } else {
+            m_canvas.scale(2f, 1f);
         }
         return this;
     }

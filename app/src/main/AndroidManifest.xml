@@ -3,6 +3,7 @@
     package="cn.lawwing.jisporttactics">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".base.JiApp"
         android:allowBackup="true"
@@ -13,6 +14,14 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.MainActivity"
+            android:screenOrientation="landscape">
+
+        </activity>
+        <activity
+            android:name=".ui.activity.recordtactic.RecordtacticActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.GuideActivity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

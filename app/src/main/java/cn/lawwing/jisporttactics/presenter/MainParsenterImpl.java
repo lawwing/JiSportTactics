@@ -22,4 +22,14 @@ public class MainParsenterImpl implements IMainPrisenter {
     public void loadMainInfo() {
         mainView.showMainList(mainModel.getMainMenu());
     }
+
+    @Override
+    public void initNowTimeArea() {
+        mainView.initTimeView(mainModel.getTimeFormatString());
+    }
+
+    @Override
+    public void initModeShow() {
+        mainView.showModeText(mainModel.getModeText());
+    }
 }

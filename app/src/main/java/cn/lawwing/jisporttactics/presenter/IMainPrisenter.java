@@ -8,4 +8,11 @@ import cn.lawwing.jisporttactics.base.BasePersenter;
 
 public interface IMainPrisenter extends BasePersenter {
     void loadMainInfo();
+
+    /**
+     * 初始化现在的时间以及启动
+     */
+    void initNowTimeArea();
+
+    void initModeShow();
 }

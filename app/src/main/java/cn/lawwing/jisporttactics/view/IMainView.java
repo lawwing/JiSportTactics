@@ -10,4 +10,13 @@ import cn.lawwing.jisporttactics.beans.MainMenuBean;
 
 public interface IMainView {
     void showMainList(ArrayList<MainMenuBean> list);
+
+    /**
+     * 初始化当前时间的VIEW
+     *
+     * @param timeFormatString
+     */
+    void initTimeView(String timeFormatString);
+
+    void showModeText(String modeText);
 }

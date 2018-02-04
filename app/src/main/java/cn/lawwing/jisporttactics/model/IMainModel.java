@@ -10,4 +10,8 @@ import cn.lawwing.jisporttactics.beans.MainMenuBean;
 
 public interface IMainModel {
     ArrayList<MainMenuBean> getMainMenu();
+
+    String getTimeFormatString();
+
+    String getModeText();
 }
