@@ -1,5 +1,7 @@
 package cn.lawwing.jisporttactics.model;
 
+import android.support.v4.app.Fragment;
+
 import java.util.ArrayList;
 
 import cn.lawwing.jisporttactics.beans.MainMenuBean;
@@ -10,6 +12,8 @@ import cn.lawwing.jisporttactics.beans.MainMenuBean;
 
 public interface IMainModel {
     ArrayList<MainMenuBean> getMainMenu();
+
+    ArrayList<Fragment> getMainFragment();
 
     String getTimeFormatString();
 

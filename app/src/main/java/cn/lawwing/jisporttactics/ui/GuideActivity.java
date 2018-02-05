@@ -41,6 +41,7 @@ public class GuideActivity extends BaseActivity implements SelectModeDialog.ISel
             } else if (msg.what == OTHER_OPEN) {
                 //进入首页
                 startActivity(MainActivity.newIntance(GuideActivity.this));
+                finish();
             }
         }
     };
@@ -55,5 +56,6 @@ public class GuideActivity extends BaseActivity implements SelectModeDialog.ISel
         SharedPreferencesUtils.setIsFirstOpen(GuideActivity.this, false);
         SharedPreferencesUtils.setAppMode(GuideActivity.this, mode);
         startActivity(MainActivity.newIntance(GuideActivity.this));
+        finish();
     }
 }

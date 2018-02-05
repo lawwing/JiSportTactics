@@ -3,9 +3,9 @@ package cn.lawwing.jisporttactics.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.TextView;
@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import cn.lawwing.jisporttactics.R;
-import cn.lawwing.jisporttactics.adapter.MainAdapter;
+import cn.lawwing.jisporttactics.adapter.MainViewPagerAdapter;
 import cn.lawwing.jisporttactics.base.BaseActivity;
 import cn.lawwing.jisporttactics.base.JiApp;
 import cn.lawwing.jisporttactics.beans.MainMenuBean;
@@ -31,18 +31,20 @@ import cn.lawwing.jisporttactics.utils.TimeUtils;
 import cn.lawwing.jisporttactics.view.IMainView;
 
 public class MainActivity extends BaseActivity implements IMainView, SelectModeDialog.ISelectModeDialogListener {
-    @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
     @BindView(R.id.cm_now_time)
     Chronometer mNowTime;
     @BindView(R.id.tv_home_title)
     TextView mHomeTitle;
+    @BindView(R.id.tablayout)
+    TabLayout mTabLayout;
+    @BindView(R.id.viewpager)
+    ViewPager mViewPager;
 
     Unbinder unbinder;
 
-    private MainAdapter adapter;
-
     MainParsenterImpl mPresenter;
+
+    private MainViewPagerAdapter adapter;
 
     public static Intent newIntance(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -77,13 +79,13 @@ public class MainActivity extends BaseActivity implements IMainView, SelectModeD
         super.onDestroy();
     }
 
+
     @Override
-    public void showMainList(ArrayList<MainMenuBean> list) {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
-        gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(gridLayoutManager);
-        adapter = new MainAdapter(MainActivity.this, list);
-        recyclerView.setAdapter(adapter);
+    public void showMainList(ArrayList<MainMenuBean> list, ArrayList<Fragment> fragments) {
+        adapter = new MainViewPagerAdapter(getSupportFragmentManager(), list, fragments);
+        mViewPager.setAdapter(adapter);
+        mViewPager.setCurrentItem(0);
+        mTabLayout.setupWithViewPager(mViewPager);
     }
 
     @Override

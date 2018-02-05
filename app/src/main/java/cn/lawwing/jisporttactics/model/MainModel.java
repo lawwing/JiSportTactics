@@ -1,13 +1,19 @@
 package cn.lawwing.jisporttactics.model;
 
 import android.graphics.Color;
+import android.support.v4.app.Fragment;
 
 import java.util.ArrayList;
 
 import cn.lawwing.jisporttactics.base.JiApp;
 import cn.lawwing.jisporttactics.beans.MainMenuBean;
-import cn.lawwing.jisporttactics.ui.MainActivity;
 import cn.lawwing.jisporttactics.ui.activity.recordtactic.RecordtacticActivity;
+import cn.lawwing.jisporttactics.ui.fragment.mainmenu.MainBaseTacticFragment;
+import cn.lawwing.jisporttactics.ui.fragment.mainmenu.MainFormationFragment;
+import cn.lawwing.jisporttactics.ui.fragment.mainmenu.MainRecordTacticFragment;
+import cn.lawwing.jisporttactics.ui.fragment.mainmenu.MainSettingFragment;
+import cn.lawwing.jisporttactics.ui.fragment.mainmenu.MainTacticLibFragment;
+import cn.lawwing.jisporttactics.ui.fragment.mainmenu.MainTrainTacticFragment;
 import cn.lawwing.jisporttactics.utils.SharedPreferencesUtils;
 
 import static cn.lawwing.jisporttactics.common.StaticDatas.FOOTBALL_MODE;
@@ -17,11 +23,9 @@ import static cn.lawwing.jisporttactics.common.StaticDatas.FOOTBALL_MODE;
  */
 
 public class MainModel implements IMainModel {
-    private String[] names = {"即时战术", "录战术", "战术库", "训练安排", "阵型管理", "个人设置"};
-
+    private String[] names = {"即时战术", "录战术", "战术库", "训练战术", "阵型管理", "个人设置"};
     private int[] bgcolors = {Color.BLACK, Color.BLUE, Color.CYAN, Color.GRAY,
             Color.GREEN, Color.RED};
-
     private int[] textcolors = {Color.WHITE, Color.WHITE, Color.WHITE,
             Color.BLUE, Color.WHITE, Color.WHITE};
 
@@ -38,6 +42,20 @@ public class MainModel implements IMainModel {
             list.add(bean);
         }
         return list;
+    }
+
+    @Override
+    public ArrayList<Fragment> getMainFragment() {
+        ArrayList<Fragment> fragments = new ArrayList<>();
+
+        fragments.add(new MainBaseTacticFragment());
+        fragments.add(new MainRecordTacticFragment());
+        fragments.add(new MainTacticLibFragment());
+        fragments.add(new MainTrainTacticFragment());
+        fragments.add(new MainFormationFragment());
+        fragments.add(new MainSettingFragment());
+
+        return fragments;
     }
 
     @Override

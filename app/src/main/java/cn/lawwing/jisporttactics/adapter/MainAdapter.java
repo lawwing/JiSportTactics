@@ -29,26 +29,17 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
 
     private ArrayList<MainMenuBean> datas;
 
-    private int itemHeight = 100;
-
     private int itemWidth = 100;
 
     public MainAdapter(Activity activity, ArrayList<MainMenuBean> datas) {
         this.activity = activity;
         this.datas = datas;
         inflater = LayoutInflater.from(activity);
-        int screemHeight = ScreenUtils.getScreenHeight(activity);
-        int screemWidth = ScreenUtils.getScreenWidth(activity);
-
-        itemHeight = screemHeight / 2;
-        itemWidth = screemWidth / 3;
     }
 
     @Override
     public MainHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.item_main_layout, parent, false);
-        view.getLayoutParams().height = itemHeight;
-        view.getLayoutParams().width = itemWidth;
         return new MainHolder(view);
     }
 

@@ -1,5 +1,7 @@
 package cn.lawwing.jisporttactics.view;
 
+import android.support.v4.app.Fragment;
+
 import java.util.ArrayList;
 
 import cn.lawwing.jisporttactics.beans.MainMenuBean;
@@ -9,7 +11,7 @@ import cn.lawwing.jisporttactics.beans.MainMenuBean;
  */
 
 public interface IMainView {
-    void showMainList(ArrayList<MainMenuBean> list);
+    void showMainList(ArrayList<MainMenuBean> list, ArrayList<Fragment> fragments);
 
     /**
      * 初始化当前时间的VIEW

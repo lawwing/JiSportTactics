@@ -20,7 +20,7 @@ public class MainParsenterImpl implements IMainPrisenter {
 
     @Override
     public void loadMainInfo() {
-        mainView.showMainList(mainModel.getMainMenu());
+        mainView.showMainList(mainModel.getMainMenu(),mainModel.getMainFragment());
     }
 
     @Override
